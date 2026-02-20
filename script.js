@@ -7,7 +7,7 @@ const IMAGES = {
   // Ashrif photo (Marketing)
   ASHROF_DIRECT:"https://i.ibb.co/rR17f3nH/Ashrif-IMG.png",
   // ✅ fixed link (case sensitive)
-  SHIHAB_DIRECT:"https://i.ibb.co/F4Q1Hmfy/Sihab-IMG.png",
+  SHIHAB_DIRECT:"https://i.ibb.co/LdDZSryB/Sihab-IMG.png",
   // Manaal photo (Founder)
   MANAL_DIRECT: "https://i.ibb.co/MxZYZ4Wp/MAnal-IMG.jpg"
 };
