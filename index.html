@@ -1,0 +1,663 @@
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#home">
+      <img class="logo" id="siteLogo" src="" alt="Lanka Trails logo" />
+    </a>
+
+    <nav class="links">
+      <a href="#home">Home</a>
+      <a href="#packages">Packages</a>
+      <a href="#planner">AI Planner</a>
+      <a href="#market">Market</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="btn btn-primary" id="navBookBtn" type="button">Book Now</button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="section hero">
+    <div class="container grid-2">
+      <div>
+        <div class="pill">Lanka Trails • Safety-first hiking bookings</div>
+        <h1>Explore Sri Lanka’s Peaks Safely & Easily</h1>
+        <p class="muted">
+          Book guided hiking packages with food, transport, and medical support — all in one place.
+        </p>
+
+        <div class="row">
+          <a class="btn btn-primary" href="#packages">Book a Hike</a>
+          <a class="btn btn-ghost" href="#planner">Plan My Hike (AI)</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-title">Trusted Guides</div>
+            <div class="stat-desc">Safety-first teams</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Food Options</div>
+            <div class="stat-desc">Veg / Non-veg / Halal</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Transport</div>
+            <div class="stat-desc">Pickups & travel help</div>
+          </div>
+          <div class="stat">
+            <div class="stat-title">Medical Support</div>
+            <div class="stat-desc">Emergency-ready planning</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side hero image -->
+      <div class="hero-card">
+        <div class="hero-img" id="heroImage"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM + SOLUTION -->
+  <section class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>The problem</h2>
+        <ul class="list">
+          <li>Hard to find trusted guides</li>
+          <li>No proper medical support</li>
+          <li>Food & travel planning is confusing</li>
+          <li>No easy online booking system</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Our solution</h2>
+        <p class="muted">
+          Lanka Trails is a single platform to book safe, guided hiking experiences in Sri Lanka — with optional meals,
+          transport, and medical support. Eco-friendly hiking experiences for a better tomorrow.
+        </p>
+        <div class="row">
+          <a class="btn btn-primary" href="#packages">View Packages</a>
+          <a class="btn btn-ghost" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Packages</h2>
+        <p class="muted">Choose your hike and book with food, transport, and safety options.</p>
+      </div>
+
+      <div class="filters">
+        <select id="filterDifficulty">
+          <option value="all">Difficulty: All</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+
+        <select id="filterDuration">
+          <option value="all">Duration: All</option>
+          <option value="1 Day">1 Day</option>
+          <option value="2 Days">2 Days</option>
+          <option value="3+ Days">3+ Days</option>
+        </select>
+
+        <input id="searchPackage" type="text" placeholder="Search package (e.g., Hanthana)" />
+      </div>
+
+      <div id="packageGrid" class="grid-3"></div>
+    </div>
+  </section>
+
+  <!-- AI PLANNER -->
+  <section id="planner" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>AI Hiking Planner (Demo)</h2>
+        <p class="muted">Fill the form and get a suggested plan. Continue to booking to send the plan.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Tell us about your hike</h3>
+
+          <div class="form">
+            <label>
+              Number of hiking days
+              <input id="days" type="number" min="1" value="1" />
+            </label>
+
+            <div class="grid-mini">
+              <label>
+                Fitness level
+                <select id="fitness">
+                  <option>Beginner</option>
+                  <option>Intermediate</option>
+                  <option>Advanced</option>
+                </select>
+              </label>
+
+              <label>
+                Experience
+                <select id="experience">
+                  <option>New</option>
+                  <option>Some experience</option>
+                  <option>Expert</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="grid-mini">
+              <label>
+                Food preference
+                <select id="food">
+                  <option>Veg</option>
+                  <option>Non-veg</option>
+                  <option selected>Halal</option>
+                </select>
+              </label>
+
+              <label>
+                Group size
+                <input id="group" type="number" min="1" value="1" />
+              </label>
+            </div>
+
+            <label>
+              Medical condition
+              <select id="medical">
+                <option selected>None</option>
+                <option>Asthma</option>
+                <option>Heart condition</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <button class="btn btn-primary" id="generatePlanBtn" type="button">Generate Plan</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Your Recommended Plan</h3>
+
+          <div class="plan">
+            <div class="plan-box">
+              <div class="muted small">Suggested Route</div>
+              <div id="planRoute" class="plan-value">—</div>
+            </div>
+
+            <div class="plan-box">
+              <div class="muted small">Safety & Medical</div>
+              <div id="planSafety" class="plan-value">—</div>
+            </div>
+
+            <div class="plan-box">
+              <div class="muted small">Preferences Summary</div>
+              <div id="planPrefs" class="plan-value">—</div>
+            </div>
+
+            <button class="btn btn-ghost" id="continueToBookingBtn" type="button">
+              Continue to Booking
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET -->
+  <section id="market" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Market & Growth</h2>
+        <p class="muted">Adventure tourism is growing. Lanka Trails focuses on safe, smart hiking.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card small-card">
+          <div class="muted small">Deck estimate</div>
+          <div class="big">610,000 hikers</div>
+          <div class="muted small">International (2025 estimate)</div>
+        </div>
+        <div class="card small-card">
+          <div class="muted small">Target age</div>
+          <div class="big">18–40</div>
+          <div class="muted small">Youth adventure travel</div>
+        </div>
+        <div class="card small-card">
+          <div class="muted small">Preference</div>
+          <div class="big">Guided hikes</div>
+          <div class="muted small">Many prefer safety support</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <h3>Future growth plan</h3>
+        <ul class="list">
+          <li>Real-time tracking & emergency alerts</li>
+          <li>Branded safety kits & hiking gear</li>
+          <li>Energy/nutrition packs for hikers</li>
+          <li>Improve AI using user data</li>
+          <li>Expand into eco-tourism experiences</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Team</h2>
+        <p class="muted">A focused team building a safer, smarter hiking experience.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Manaal = Founder -->
+        <div class="card team-card">
+          <img class="team-img" id="imgManal" src="" alt="Manaal MHM" />
+          <div>
+            <h3>Manaal MHM</h3>
+            <p class="muted">Founder & Product Lead</p>
+          </div>
+        </div>
+
+        <!-- Sihab stays same -->
+        <div class="card team-card">
+          <img class="team-img" id="imgShihab" src="" alt="Sihab JM" />
+          <div>
+            <h3>Sihab JM</h3>
+            <p class="muted">Operations & Safety Lead</p>
+          </div>
+        </div>
+
+        <!-- Ashrif = Marketing -->
+        <div class="card team-card">
+          <img class="team-img" id="imgAshrof" src="" alt="Ashrif JM" />
+          <div>
+            <h3>Ashrif JM</h3>
+            <p class="muted">Marketing & Partnerships Lead</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <h3>Experience</h3>
+        <p class="muted">
+          6 years of combined experience in retail, coordination, and customer handling.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact & Booking</h2>
+        <p class="muted">Send your booking request and we’ll confirm with details.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Contact</h3>
+          <div class="muted" style="margin-top:10px;">
+            <div>📍 Colombo, Sri Lanka</div>
+            <div>✉️ hello@lankatrails.com (placeholder)</div>
+            <div>📱 @lankatrails (social)</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Message us</h3>
+          <!-- Optional: you can connect this to Formspark too (same endpoint) -->
+          <form method="POST" action="https://submit-form.com/ubAeXmNYF" class="form" id="contactForm">
+            <input type="hidden" name="type" value="Contact Message">
+
+            <label>
+              Name
+              <input required name="name" placeholder="Your name" />
+            </label>
+
+            <label>
+              Email
+              <input required type="email" name="email" placeholder="you@email.com" />
+            </label>
+
+            <label>
+              Message
+              <textarea required name="message" placeholder="Your message..."></textarea>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-title">Lanka Trails</div>
+      <div class="muted small">Explore Sri Lanka’s Peaks Safely & Easily</div>
+    </div>
+    <div class="footer-links">
+      <a href="#packages">Packages</a>
+      <a href="#planner">AI Planner</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL (Formspark connected) -->
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="modal-title">Booking Request</div>
+        <div class="muted small" id="modalPkg">Package: —</div>
+      </div>
+      <button class="btn btn-ghost btn-small" id="closeModalBtn" type="button">Close</button>
+    </div>
+
+    <form
+      id="bookingForm"
+      class="form"
+      method="POST"
+      action="https://submit-form.com/ubAeXmNYF"
+    >
+      <input type="hidden" name="type" value="Booking Request">
+      <input type="hidden" name="selected_package" id="selectedPackageField" value="">
+      <input type="hidden" name="ai_plan" id="aiPlanField" value="">
+      <input type="hidden" name="source" value="LankaTrails Website">
+
+      <label>
+        Full Name
+        <input required name="fullName" placeholder="Your full name" />
+      </label>
+
+      <label>
+        Email
+        <input required type="email" name="email" placeholder="you@email.com" />
+      </label>
+
+      <label>
+        Phone / WhatsApp
+        <input required name="phone" placeholder="07X XXX XXXX" />
+      </label>
+
+      <div class="grid-mini">
+        <label>
+          Date
+          <input required type="date" name="date" />
+        </label>
+        <label>
+          Group size
+          <input required name="groupSize" type="number" min="1" value="1" />
+        </label>
+      </div>
+
+      <div class="grid-mini">
+        <label>
+          Food preference
+          <select name="foodPref">
+            <option>Veg</option>
+            <option>Non-veg</option>
+            <option selected>Halal</option>
+          </select>
+        </label>
+
+        <label>
+          Transport needed
+          <select name="transport">
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </label>
+      </div>
+
+      <label>
+        Medical support required
+        <select name="medicalSupport">
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+      </label>
+
+      <label>
+        Extra note
+        <textarea name="note" placeholder="Pickup location, special needs, etc."></textarea>
+      </label>
+
+      <button class="btn btn-primary" type="submit">Submit Booking</button>
+      <div class="muted small">
+        After you submit, we will contact you via WhatsApp/Email to confirm.
+      </div>
+    </form>
+  </div>
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lanka Trails - Booking Request</title>
+
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#072522;
+      color:#fff;
+      margin:0;
+      padding:30px;
+    }
+    .wrap{
+      max-width:650px;
+      margin:0 auto;
+    }
+    .card{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 22px;
+    }
+    h1{margin:0 0 10px}
+    p{margin:0 0 18px; opacity:0.85}
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    label{
+      font-size:14px;
+      opacity:0.9;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.25);
+      color:#fff;
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:120px; resize:vertical;}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    @media(min-width:700px){
+      .grid{grid-template-columns:1fr 1fr;}
+    }
+
+    button{
+      padding:12px 16px;
+      border-radius:16px;
+      border:none;
+      background:#fff;
+      color:#072522;
+      font-weight:700;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    .hint{
+      font-size:12px;
+      opacity:0.75;
+      margin-top:10px;
+      line-height:1.5;
+    }
+
+    .thankyou{
+      margin-top:18px;
+      display:none;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.22);
+    }
+    .thankyou.show{display:block;}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Booking Request</h1>
+      <p>Fill this form. We will confirm your booking via WhatsApp / Email.</p>
+
+      <!-- ✅ FORMSPARK FORM -->
+      <form id="bookingForm" method="POST" action="https://submit-form.com/ubAeXmNYF">
+        <!-- hidden metadata -->
+        <input type="hidden" name="type" value="Booking Request" />
+        <input type="hidden" name="source" value="LankaTrails Website" />
+        <!-- (optional) if you want to pass package name from your website later -->
+        <input type="hidden" name="selected_package" id="selectedPackage" value="Custom Booking" />
+
+        <label>
+          Full Name
+          <input name="fullName" type="text" placeholder="Your full name" required />
+        </label>
+
+        <label>
+          Email
+          <input name="email" type="email" placeholder="you@email.com" required />
+        </label>
+
+        <label>
+          Phone / WhatsApp
+          <input name="phone" type="text" placeholder="07X XXX XXXX" required />
+        </label>
+
+        <div class="grid">
+          <label>
+            Hiking Date
+            <input name="date" type="date" required />
+          </label>
+
+          <label>
+            Group Size
+            <input name="groupSize" type="number" min="1" value="1" required />
+          </label>
+        </div>
+
+        <div class="grid">
+          <label>
+            Food Preference
+            <select name="foodPref" required>
+              <option>Veg</option>
+              <option>Non-veg</option>
+              <option selected>Halal</option>
+            </select>
+          </label>
+
+          <label>
+            Transport Needed?
+            <select name="transport" required>
+              <option>No</option>
+              <option>Yes</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Medical Support Required?
+          <select name="medicalSupport" required>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </label>
+
+        <label>
+          Package / Location
+          <input name="packageOrLocation" type="text" placeholder="Hanthana / Knuckles / Horton Plains..." />
+        </label>
+
+        <label>
+          Extra Note
+          <textarea name="note" placeholder="Pickup place, special needs, anything important..."></textarea>
+        </label>
+
+        <button type="submit">Submit Booking</button>
+
+        <div class="hint">
+          ✅ After you submit, your details go to Formspark.<br/>
+          ✅ We will contact you to confirm and share payment details.
+        </div>
+      </form>
+
+      <!-- simple thank you (shown if you use the JS below) -->
+      <div id="thanksBox" class="thankyou">
+        ✅ Booking sent! Please check your email/WhatsApp. We will contact you soon.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // OPTIONAL: show message instead of leaving the page
+    // This uses fetch to submit without redirect.
+    // If it fails due to CORS in some environments, remove this script and normal submit will work.
+
+    const form = document.getElementById("bookingForm");
+    const thanks = document.getElementById("thanksBox");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      try {
+        const formData = new FormData(form);
+        const res = await fetch(form.action, { method: "POST", body: formData });
+
+        if (res.ok) {
+          form.reset();
+          thanks.classList.add("show");
+          setTimeout(() => thanks.classList.remove("show"), 7000);
+        } else {
+          alert("Submission failed. Please try again.");
+        }
+      } catch (err) {
+        // fallback: normal submit (redirect)
+        form.removeEventListener("submit", () => {});
+        form.submit();
+      }
+    });
+  </script>
+</body>
+</html>
